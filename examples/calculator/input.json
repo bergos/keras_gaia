@@ -1,0 +1,12 @@
+[
+  {"input:begin":1,"input:number":0.4384249216322096},
+  {"input:operator/multiply":1,"input:number":0.2768846387462012},
+  {"input:operator/plus":1,"input:number":0.6400970615206645},
+  {"input:operator/multiply":1,"input:number":0.34854628330395543},
+  {"input:operator/multiply":1,"input:number":0.059580525262460604},
+  {"input:operator/plus":1,"input:number":0.5797282893160274},
+  {"input:operator/plus":1,"input:number":0.5371323771890526},
+  {"input:operator/plus":1,"input:number":0.2670264980077026},
+  {"input:operator/multiply":1,"input:number":0.8526435699152919},
+  {"input:end":1}
+]

@@ -1,0 +1,13 @@
+{
+ "input": [
+  "input:begin",
+  "input:end",
+  "input:operator/plus",
+  "input:operator/minus",
+  "input:operator/multiply",
+  "input:number"
+ ],
+ "output": [
+  "output:result"
+ ]
+}

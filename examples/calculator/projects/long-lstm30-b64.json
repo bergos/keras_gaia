@@ -1,0 +1,24 @@
+{
+  "label": "calculator-long-lstm30-b64",
+  "description": "Calculator using the long dataset with a 30 layer LSTM model",
+  "dataset": {
+    "trainingDataJson": "data/calculator-long.train.data.json",
+    "testDataJson": "data/calculator.test.data.json"
+  },
+  "model": {
+    "ioNamesJson": "models/modelio.json",
+    "topologyPython": "models/lstm30.py",
+    "weightsHdf5": "models/lstm30.hdf5"
+  },
+  "training": {
+    "batchSize": 64,
+    "epochs": 200,
+    "shuffle": true,
+    "varyingBatchSize": true,
+    "lossLogFile": "logs/long-lstm30-b64.loss.csv",
+    "testLogFile": "logs/long-lstm30-b64.test.csv",
+    "testLogInterval": 5,
+    "checkpointFile": "logs/long-lstm30-b64.weights.{epoch:06d}.hdf5",
+    "checkpointInterval": 50
+  }
+}

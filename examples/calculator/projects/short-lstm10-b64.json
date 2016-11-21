@@ -1,0 +1,22 @@
+{
+  "label": "calculator-short-lstm10-b64",
+  "description": "Calculator using the short dataset with a 10 layer LSTM model",
+  "dataset": {
+    "trainingDataJson": "data/calculator-short.train.data.json",
+    "testDataJson": "data/calculator.test.data.json"
+  },
+  "model": {
+    "ioNamesJson": "models/modelio.json",
+    "topologyPython": "models/lstm10.py"
+  },
+  "training": {
+    "batchSize": 64,
+    "epochs": 200,
+    "shuffle": true,
+    "lossLogFile": "logs/short-lstm10-b64.loss.csv",
+    "testLogFile": "logs/short-lstm10-b64.test.csv",
+    "testLogInterval": 5,
+    "checkpointFile": "logs/short-lstm10-b64.weights.{epoch:06d}.hdf5",
+    "checkpointInterval": 50
+  }
+}
