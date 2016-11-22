@@ -41,13 +41,25 @@ def load(config, options=None):
     if 'dataset' in config:
         dataset = dataset_utils.load(config['dataset'], model, training, options)
 
-    return Project(
+    if 'weightsHdf5' in config:
+        weights_hdf5 = config['weightsHdf5']
+
+        if not weights_hdf5.startswith('/'):
+            weights_hdf5 = os.path.join(options['base'], weights_hdf5)
+
+    project = Project(
         label=label,
         description=description,
+        weights_hdf5=weights_hdf5,
         dataset=dataset,
         model=model,
         training=training,
         options=options)
+
+    if 'loadWeights' in options and options['loadWeights']:
+        project.model.load_weights_hdf5(project.weights_hdf5)
+
+    return project
 
 
 def load_json(filename, options=None):
@@ -61,6 +73,7 @@ class Project:
             self,
             label=None,
             description=None,
+            weights_hdf5=None,
             dataset=None,
             model=None,
             training=None,
@@ -68,6 +81,7 @@ class Project:
 
         self.label = label
         self.description = description
+        self.weights_hdf5 = weights_hdf5
         self.dataset = dataset
         self.model = model
         self.training = training
@@ -147,7 +161,7 @@ class Project:
                 shuffle=self.training.shuffle,
                 callbacks=callbacks)
 
-        self.model.save_weights_hdf5()
+        self.model.save_weights_hdf5(self.weights_hdf5)
 
     def train_resume(self, epoch, callbacks=None):
         filename = self.training.checkpoint_file.format(epoch=epoch)

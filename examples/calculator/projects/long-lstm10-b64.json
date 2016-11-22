@@ -1,6 +1,7 @@
 {
   "label": "calculator-long-lstm10-b64",
   "description": "Calculator using the long dataset with a 10 layer LSTM model",
+  "weightsHdf5": "logs/long-lstm10.hdf5",
   "dataset": {
     "trainingDataJson": "data/calculator-long.train.data.json",
     "testDataJson": "data/calculator.test.data.json"

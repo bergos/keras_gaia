@@ -1,6 +1,7 @@
 {
   "label": "calculator-short-lstm30-b64",
   "description": "Calculator using the short dataset with a 30 layer LSTM model",
+  "weightsHdf5": "logs/short-lstm30.hdf5",
   "dataset": {
     "trainingDataJson": "data/calculator-short.train.data.json",
     "testDataJson": "data/calculator.test.data.json"
@@ -13,7 +14,6 @@
     "batchSize": 64,
     "epochs": 200,
     "shuffle": true,
-    "varyingBatchSize": true,
     "lossLogFile": "logs/short-lstm30-b64.loss.csv",
     "testLogFile": "logs/short-lstm30-b64.test.csv",
     "testLogInterval": 5,

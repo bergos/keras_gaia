@@ -7,7 +7,6 @@ def load(config, options=None):
     description = None
     io_names = None
     topology = None
-    weights_hdf5 = None
 
     if options is None:
         options = {}
@@ -34,18 +33,7 @@ def load(config, options=None):
 
         topology = utils.load_python(filename)
 
-    if 'weightsHdf5' in config:
-        weights_hdf5 = config['weightsHdf5']
-
-        if not weights_hdf5.startswith('/'):
-            weights_hdf5 = path.join(options['base'], weights_hdf5)
-
-    model = Model(label=label, description=description, io_names=io_names, topology=topology, weights_hdf5=weights_hdf5)
-
-    if 'loadWeights' in options and options['loadWeights']:
-        model.load_weights_hdf5()
-
-    return model
+    return Model(label=label, description=description, io_names=io_names, topology=topology)
 
 
 class Model:
@@ -54,17 +42,15 @@ class Model:
             label=None,
             description=None,
             io_names=None,
-            topology=None,
-            weights_hdf5=None):
+            topology=None):
 
         self.label = label
         self.description = description
         self.io_names = io_names
         self.topology = topology
-        self.weights_hdf5 = weights_hdf5
 
-    def load_weights_hdf5(self):
-        self.topology.load_weights(self.weights_hdf5)
+    def load_weights_hdf5(self, filename):
+        self.topology.load_weights(filename)
 
-    def save_weights_hdf5(self):
-        self.topology.save_weights(self.weights_hdf5)
+    def save_weights_hdf5(self, filename):
+        self.topology.save_weights(filename)
